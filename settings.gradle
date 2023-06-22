@@ -1,0 +1,5 @@
+rootProject.name = 'TaskManager_CICD'
+include 'core'
+include 'data'
+include 'ui'
+

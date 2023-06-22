@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "description": "task1",
+      "done": true,
+      "priority": 10
+    },
+    {
+      "description": "task",
+      "done": false,
+      "priority": 1
+    },
+    {
+      "description": "newTask",
+      "done": true,
+      "priority": 0
+    },
+    {
+      "description": "newTask",
+      "done": false,
+      "priority": 0
+    }
+  ]
+}
