@@ -7,7 +7,7 @@ permissions:
   packages: write
 
 jobs:
-  analyze-code:
+  analyze:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
 
-  build-jar:
+  build:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     needs: test
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
 
   publish:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
-    needs: build
+    needs: build-jar
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
