@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'org.mapthree'
@@ -19,7 +20,6 @@ test {
 }
 
 allprojects {
-    apply plugin: 'java'
     apply plugin: 'checkstyle'
 
     checkstyle {
@@ -31,6 +31,29 @@ allprojects {
         reports {
             xml.required = false
             html.required = true
+        }
+    }
+}
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            groupId = 'org.mapthree'
+            artifactId = 'java-automatization-4'
+            version = '1.0-SNAPSHOT'
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/mariana0412/TaskManager_CICD")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
