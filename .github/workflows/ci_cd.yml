@@ -36,7 +36,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
 
-  build:
+  build-jar:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     needs: test
     runs-on: ubuntu-latest
