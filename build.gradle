@@ -17,3 +17,20 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'checkstyle'
+
+    checkstyle {
+        configFile = file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
+        toolVersion = "9.0"
+    }
+
+    tasks.withType(Checkstyle).configureEach {
+        reports {
+            xml.required = false
+            html.required = true
+        }
+    }
+}
